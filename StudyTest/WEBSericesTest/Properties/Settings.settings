@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WEBSericesTest.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="WEBSericesTest_com_10628106_client_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://client.10628106.com:4804/Service.asmx</Value>
+    </Setting>
+    <Setting Name="WEBSericesTest_localhost_CaluteSevices" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:1922/CaluteSevices.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

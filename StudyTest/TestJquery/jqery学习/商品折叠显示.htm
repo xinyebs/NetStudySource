@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        ul
+        {
+            width: 400px;
+            
+        }
+        ul li
+        {
+            list-style-type: none;
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="subGategroyBOx">
+        <ul>
+            <li><a href="">佳能</a><i>(3044)</i></li>
+            <li><a href="">索尼</a><i>(3045)</i></li>
+            <li><a href="">联想</a><i>(3046)</i></li>
+            <li><a href="">尼康</a><i>(3047)</i></li>
+            <li><a href="">三星</a><i>(3048)</i></li>
+            <li><a href="">富士康</a><i>(3040)</i></li>
+            <li><a href="">柯达</a><i>(3041)</i></li>
+            <li><a href="">理光</a><i>(3042)</i></li>
+            <li><a href="">明的</a><i>(3054)</i></li>
+            <li><a href="">外来</a><i>(3064)</i></li>
+            <li><a href="">坚持</a><i>(3094)</i></li>
+            <li><a href="">爱国者</a><i>(3074)</i></li>
+            <li><a href="">卡西欧</a><i>(3014)</i></li>
+            <li><a href="">其他品牌</a><i>(3024)</i></li>
+        </ul>
+        <div class="showmore">
+            <a href="more.html"><span>显示全部品牌</span></a>
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+
+        //先获取索引大于5的（从0开始计数），但是最后一个元素除外，隐藏掉
+        var $category = $("ul li:gt(5):not(:last)").hide();
+
+        var $showMore = $(".showmore a");
+
+        $showMore.click(function () {
+
+            if ($category.is(":hidden")) {  //如果是隐藏的。就显示
+
+                $category.show();  //显示所有品牌
+                $(".showmore a span").text("收缩部分品牌");
+                ///对三个品牌高亮显示
+                //filter(exp):筛选出与指定表达式相匹配的元素集合，其中exp可以是多个选择器组合
+                $("ul li").filter(":contains('佳能'),:contains('三星'),:contains('索尼')")
+            .css("fontWeight", "bold");
+            } else {
+
+                $category.hide();
+                $(".showmore a span").text("显示全部品牌");
+
+            }
+            return false;   //组织超链接跳转，让浏览器认为用户么有单击该超链接,在可行域return false后面的代码不会执行
+        });
+
+    });
+</script>

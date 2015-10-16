@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <title></title>
+</head>
+<body>
+    <div id="pannel">
+        <h1 class="head">
+            什么是jquery</h1>
+        <div class="content">
+            jquery 历史请打大楼附近的路口附近的离开解放打开了房间打开了房间打开发动机防盗看风景的开发基地开发进度款发动机疯狂的减肥的看法
+        </div>
+    </div>
+</body>
+</html>
+<Script type="text/javascript">
+    $(function () {
+
+        //        $("#pannel h1").bind("click", function () {
+
+        //            var $content = $(this).next("div.content");
+
+        //            if ($content.is(":visible")) {
+
+        //                $content.hide();
+        //            } else {
+
+        //                $content.show();
+        //            }
+
+        //        });
+
+        //        $("#pannel h1").hover(function () {
+        //            $(this).next("div.content").hide();
+        //        }, function () {
+        //            $(this).next("div.content").show();
+        //        });
+
+
+        $("#pannel h1").toggle(function () {
+            $(this).next("div.content").hide();
+        }, function () {
+            $(this).next("div.content").show();
+        });
+    })
+</Script>

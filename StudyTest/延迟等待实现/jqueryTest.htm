@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        table
+        {
+            border: 1px solid black;
+            width: 400px;
+            border-collapse: collapse; /*让单元格边框之间合并*/
+        }
+        table td
+        {
+            border: 1px solid black;
+            width: 50%;
+          
+        }
+        table th
+        {
+            border: 1px solid black;
+            width: 50%;
+        }
+        table tr
+        {
+            border: 1px solid black;
+        }
+        
+        tbody th
+        {
+            background-color: Aqua;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("tbody tr:even").css("background-color", "Green"); //给所有tbody 下所有tr添加背景色
+            //$("tbody tr").css()返回的是tbody下，下标为0开始的所有tr.所以要找到所有奇数行，用偶数选择器even.
+
+            $("tbody td:even").css("background-color", "red");
+
+            var tds = $("td");
+
+            tds.click(function () {
+
+                var td = $(this); //function 中this表示可以执行this的对象。
+
+                var tdval = td.text();
+                td.html("");
+
+                var input = $("<input>");
+
+                input.attr("value", tdval);
+
+                td.append(input);
+
+                input.keyup(function (event) {
+
+                    var event = event.event || window.event;
+                    var keycode = event.keyCode;
+                    if (keycode == 13) {
+                        var inputSelect = $(this);
+
+                        var inputVal = inputSelect.val();
+
+                        var tdnode = inputSelect.parent();
+
+                        tdnode.html(inputVal);
+
+                        tdnode.click(tdClick);
+                    }
+
+                });
+
+                td.unbind("click");
+            });
+        });
+
+        function tdClick() {
+            var td = $(this); //function 中this表示可以执行this的对象。
+
+            var tdval = td.text();
+            td.html("");
+
+            var input = $("<input>");
+
+            input.attr("value", tdval);
+
+            td.append(input);
+
+            input.keyup(function (event) {
+
+                var event = event.event || window.event;
+                var keycode = event.keyCode;
+                if (keycode == 13) {
+                    var inputSelect = $(this);
+                    var inputVal = inputSelect.val();
+
+                    var tdnode = inputSelect.parent();
+
+                    tdnode.html(inputVal);
+
+                    tdnode.click(tdClick);
+                }
+
+            });
+
+            td.unbind("click");
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">
+                    鼠标点击就可以编辑
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    学号
+                </th>
+                <th>
+                    姓名
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    001
+                </td>
+                <td>
+                    张三
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    002
+                </td>
+                <td>
+                    李四
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    003
+                </td>
+                <td>
+                    王五
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    004
+                </td>
+                <td>
+                    李留
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FoldDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FoldDBModelStoreContainer">
+          <EntitySet Name="file" EntityType="FoldDBModel.Store.file" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Fold" EntityType="FoldDBModel.Store.Fold" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fke" Association="FoldDBModel.Store.fke">
+            <End Role="Fold" EntitySet="Fold" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="fileName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="filePath" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FoldId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Fold">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FoldName" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FatherId" Type="int" />
+          <Property Name="Depth" Type="int" />
+        </EntityType>
+        <Association Name="fke">
+          <End Role="Fold" Type="FoldDBModel.Store.Fold" Multiplicity="1" />
+          <End Role="file" Type="FoldDBModel.Store.file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fold">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="FoldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FoldDBModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FoldDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="file" EntityType="FoldDBModel.file" />
+          <EntitySet Name="Fold" EntityType="FoldDBModel.Fold" />
+          <AssociationSet Name="fke" Association="FoldDBModel.fke">
+            <End Role="Fold" EntitySet="Fold" />
+            <End Role="file" EntitySet="file" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fileName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="filePath" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="FoldId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Fold" Relationship="FoldDBModel.fke" FromRole="file" ToRole="Fold" />
+        </EntityType>
+        <EntityType Name="Fold">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FoldName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="FatherId" />
+          <Property Type="Int32" Name="Depth" />
+          <NavigationProperty Name="file" Relationship="FoldDBModel.fke" FromRole="Fold" ToRole="file" />
+        </EntityType>
+        <Association Name="fke">
+          <End Type="FoldDBModel.Fold" Role="Fold" Multiplicity="1" />
+          <End Type="FoldDBModel.file" Role="file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fold">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="FoldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FoldDBModelStoreContainer" CdmEntityContainer="FoldDBEntities">
+          <EntitySetMapping Name="file"><EntityTypeMapping TypeName="FoldDBModel.file"><MappingFragment StoreEntitySet="file">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="fileName" ColumnName="fileName" />
+            <ScalarProperty Name="filePath" ColumnName="filePath" />
+            <ScalarProperty Name="UserId" ColumnName="UserId" />
+            <ScalarProperty Name="FoldId" ColumnName="FoldId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Fold">
+            <EntityTypeMapping TypeName="FoldDBModel.Fold">
+              <MappingFragment StoreEntitySet="Fold">
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="FatherId" ColumnName="FatherId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FoldName" ColumnName="FoldName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Fold">
+        <EntityTypeShape EntityType="FoldDBModel.file" Width="1.5" PointX="5.25" PointY="0.875" Height="2.1610522460937496" IsExpanded="true" />
+        <EntityTypeShape EntityType="FoldDBModel.Fold" Width="1.5" PointX="3" PointY="0.875" Height="2.1610522460937496" />
+        <AssociationConnector Association="FoldDBModel.fke" >
+          <ConnectorPoint PointX="4.5" PointY="1.9555261230468748" />
+          <ConnectorPoint PointX="5.25" PointY="1.9555261230468748" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

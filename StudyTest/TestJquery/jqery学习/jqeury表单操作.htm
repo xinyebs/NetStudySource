@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+        .focus
+        {
+            border: 1px soild red;
+            background: red;
+        }
+    </style>
+    <script src="../js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("input,textarea").focus(function () {
+                $(this).addClass("focus");
+
+            }).blur(function () {
+                $(this).removeClass("focus");
+            });
+
+            //点击放大 缩小文本框
+            $(".big").click(function () {
+                var msg = $("#msg");
+
+                if (msg.height() <= 500) {
+                    //                    msg.height(msg.height() + 50);
+                    //or  user anmiate, lik down methed
+                    if (!msg.is(":animated")) {
+                        msg.animate({ height: "+=50" }, "slow");
+                    }
+                }
+            });
+
+            $(".smail").click(function () {
+                var msg = $("#msg");
+
+                if (msg.height() > 10) {
+                    msg.height(msg.height() - 50);
+                }
+            });
+
+            $(".up").click(function () {
+                var msg = $("#msg");
+                msg.scrollTop(msg.scrollTop() - 50);
+
+            });
+
+            $(".down").click(function () {
+                var msg = $("#msg");
+                if (!msg.is(":animated")) {
+                    msg.animate({ scrollTop: "+=50" }, "400");
+                }
+            });
+
+            $("#btncheckbox").click(function () {
+
+                $("input[type=checkbox]").attr("checked", true);
+
+            });
+
+            $("#btnReback").click(function () {
+                $("input[type=checkbox]").each(function () {
+
+                    $(this).attr("checked", !$(this).attr("checked"));
+
+                });
+            });
+
+            $("#btnAll").click(function () {
+
+                $("input[type=checkbox]").each(function () {
+
+                    if (this.checked) {
+                        $(this).attr("checked", false);
+                    } else {
+                        $(this).attr("checked", true);
+
+                    }
+                });
+
+            });
+
+            $("#btnToRight").click(function () {
+
+                var select = $("#multipleSelect option:selected");
+                select.remove();
+                select.appendTo("#selectLeftf");
+
+            });
+
+            $("#btnToAll").click(function () {
+
+                var select = $("select option");
+
+                select.appendTo("#selectLeftf");
+
+            });
+
+        });
+
+    
+                
+    
+    </script>
+</head>
+<body>
+    <form>
+    <fieldset>
+        <legend>个人基本信息</legend>
+        <div>
+            <span class="big">点击放大</span> <span class="smail" style="font: bold">点击缩小</span>
+        </div>
+        <br />
+        <div>
+            <span class="up">向上滚动</span> <span class="down">向下滚动</span>
+        </div>
+        <br />
+        <input type="button" id="btncheckbox" value="全选" />
+        <input type="button" id="btnReback" value="反选" />
+        <input type="button" id="btnAll" value="全选/全不选" />
+        <div>
+            <label for="userName">
+                用户名</label>
+            <input id="userName" type="text" />
+        </div>
+        <div>
+            <label for="passWord">
+                用户名</label>
+            <input id="passWord" type="text" />
+        </div>
+        <div>
+            <label>
+                复选框</label>
+            <input type="checkbox" value="1" />选项1
+            <input type="checkbox" value="2" />选项2
+            <input type="checkbox" value="3" />选项3
+            <input type="checkbox" value="4" />选项4
+            <input type="checkbox" value="5" />选项5
+        </div>
+        <div>
+            <label for="msg">
+                详细信息</label>
+            <textarea id="msg" ros="10"></textarea>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>选择框</legend>
+        <select multiple="multiple" id="multipleSelect" style="width: 100px;">
+            <option value="1">选项1</option>
+            <option value="2">选项2</option>
+            <option value="3">选项3</option>
+            <option value="4">选项4</option>
+            <option value="5">选项5</option>
+            <option value="6">选项6</option>
+            <option value="7">选项7</option>
+            <option value="8">选项8</option>
+        </select>
+        <div>
+            <input type="button" id="btnToRight" value="选中添加到右边" />
+            <input type="button" id="btnToAll" value="全部添加到右边" />
+        </div>
+        <select multiple="multiple" id="selectLeftf" style="width: 100px">
+        </select>
+    </fieldset>
+    </form>
+</body>
+</html>

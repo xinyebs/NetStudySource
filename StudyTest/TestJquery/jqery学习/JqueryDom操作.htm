@@ -1,0 +1,84 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/jquery-1.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+<p title="选择您最喜欢的水果" class="myclass">最喜欢的水果是</p>
+<ul>
+<li title="苹果">苹果</li>
+<li title="橘子">橘子</li>
+<li title="菠萝">菠萝</li>
+</ul>
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        //$("p").append("<p>要插入节点</p>"); //在p节点后面追加
+
+        //        var $p = $("<p>要插入的节点<p/>");
+
+        //        $p.appendTo("p");     //在p节点后面追加
+
+
+        //        $("p").prepend("<p>在元素内部前内置</p>");
+
+        //        $("<p>在元素内部前内置</p>").prependTo("<p>");
+
+
+        //        $("p").after("<p>在匹配元素后面插入</p>");
+
+        //        $("<p>在匹配元素后面插入</p>").insertAfter("p");
+
+        //        $("p").before("<p>在元素的前面插入</p>");
+
+        //        $("<p>在元素的前面插入</p>").insertBefore("p") ;
+
+        //        var $justRemove = $("ul li:eq(1)").remove();
+
+        //                $("ul").append($justRemove) ;
+
+
+
+        //        $("ul li[title='菠萝']").remove();
+
+
+        //        $("ul li:eq(1)").empty() ;
+
+        //复制节点，如果在clone传递true,连同该节点的所有事件都复制了
+        //        $("ul li").click(function () {
+
+        //            $(this).clone(true).appendTo("ul") ;
+
+        //        });
+
+        //        $("p").wrapInner("<b></b>") ;
+
+
+        //        var $title = $("p").removeAttr("title");
+
+        //       alert($title);
+
+
+        //        var p_class = $("p").toggleClass("news");
+
+        //        alert($("p").hasClass("myclass"));
+
+
+        //        $("p").height(100);
+        //        $("p").width(200);
+
+        var $p = $("p");
+
+        alert($p.scrollLeft);
+        alert($p.scrollTop);
+
+
+    });
+
+</script>

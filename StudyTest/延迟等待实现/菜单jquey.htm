@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <style type="text/css">
+        ul, li
+        {
+            list-style: none; /*取消默认的小圆点*/
+        }
+        ul
+        {
+            padding: 0px; /*取消ui和li的首行缩进*/
+            margin: 0px; /*取消ui和li的首行缩进 兼容ie67*/
+        }
+        .main
+        {
+            background-image: url("");
+            background-repeat: repeat-x;
+        }
+        .main a
+        {
+            color: White;
+        }
+        .main li a
+        {
+            color: Black;
+        }
+        .main ul
+        {
+            display: none; /*第一次显示的时候把菜单隐藏起来*/
+        }
+        li
+        {
+            background-color: #EEEEEE;
+        }
+        a
+        {
+            text-decoration: none;
+            padding-left: 10px;
+            display: block; /*块级元素，默认会填充整个块*/
+            display: inline-block; /* 块级元素，默认会填充整个块,兼容ie6 */
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(".main > a").click(function () {
+                //找到main 下的a标签。
+                var clickElement = $(this).next("ul"); //找到ui
+
+                //第一种方式
+                //                if (clickElement.css("display") == "none") {
+                //                    clickElement.css("display", "block");
+                //                } else {
+                //                    clickElement.css("display","none");
+                //                }
+
+                ///第二种 
+                //clickElement.show(300);
+                //clickElement.hide(300);
+                //clickElement.toggle();
+
+                //第三种  有卷帘效果的
+               // clickElement.slideDown();
+               // clickElement.slideUp();
+                clickElement.slideToggle();
+
+                ///说明：第二种和第三种在ie6浏览器中 必须要注意html头dococument标注，这个是告诉浏览器怎么解析
+                //<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            });
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li class="main"><a href="#">菜单项1</a>
+            <ul>
+                <li><a href="#">菜单项11</a></li>
+                <li><a href="#">菜单项12</a></li>
+            </ul>
+        </li>
+        <li class="main"><a href="#">菜单项2</a>
+            <ul>
+                <li><a href="#">菜单项21</a></li>
+                <li><a href="#">菜单项22</a></li>
+            </ul>
+        </li>
+        <li class="main"><a href="#">菜单项3</a>
+            <ul>
+                <li><a href="#">菜单项31</a></li>
+                <li><a href="#">菜单项32</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

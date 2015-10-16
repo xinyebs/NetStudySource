@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../js/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#loading").ajaxStart(function () {
+                $(this).show();
+            });
+
+            $("#loading").ajaxStop(function () {
+
+                $(this).hide();
+            });
+
+            $("#btnSender").click(function () {
+
+                $.ajax({
+                url:'../Handle/Handler1.ashx',
+                success:function(data){
+                alert(data);
+                },
+                
+                });
+            });
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <input value="点击发送" id="btnSender" type="button" />
+    <div id="loading" s style="display: none">
+        发送中.....</div>
+</body>
+</html>
